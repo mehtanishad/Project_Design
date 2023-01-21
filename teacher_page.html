@@ -1,16 +1,18 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% load static %}
-
 {% block main_content %}
 
 <style>
-    .UNqI{
-        padding-bottom: 5px;
-        cursor: pointer;
-    }
-</style>
 
+    .page-wrapper {
+        min-height: 406px !important;
+    }
+
+    .star-student.table-striped tbody tr:nth-of-type(odd) {
+    background-color: lavender;
+    }
+
+</style>
 
 <div class="main-wrapper">
 
@@ -178,8 +180,9 @@
 
         </ul>
 
-    </div>
+    </div><br><br>
 
+    
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-inner slimscroll">
@@ -234,8 +237,8 @@
                         </ul>
                     </li>
                     
-                    
-                    
+            
+                
 
 
                     <li class="submenu">
@@ -283,131 +286,75 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="page-wrapper">
         <div class="content container-fluid">
-
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-sub-header">
-                            <div class="col-12">
-                                <h5 class="UNqI" style="border-bottom: 2px solid black;"><span>Welcome {{user_data.Name}}</span></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row">
-                <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
+                <div class="col-sm-12">
+                    <div class="card card-table comman-shadow">
+
                         <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Students</h6>
-                                    <h3>3</h3>
-                                </div>
-                                <div class="db-icon">
-                                    <img src="{% static 'assets/img/icons/dash-icon-01.svg' %}" alt="Dashboard Icon">
+
+                            <div class="page-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="page-title">Students</h3>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
-                        <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Teacher</h6>
-                                    <h3>2</h3>
-                                </div>
-                                <div class="db-icon">
-                                    <img src="{% static 'assets/img/icons/dash-icon-02.svg' %}" alt="Dashboard Icon">
-                                </div>
+
+                            <div class="table-responsive">
+                                <table
+                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                    <thead class="student-thread">
+                                        <tr>
+                                            <th>
+                                                <!-- <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div> -->
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Roll Number</th>
+                                            <th>DOB</th>
+                                            <th>DOJ</th>
+                                            <th>Address</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for S_data in teacher %}
+                                        <tr>
+                                            <td>
+                                                <div class="form-check check-tables">
+                                                    <input class="form-check-input" type="checkbox" value="something">
+                                                </div>
+                                            </td>
+                                            <td>{{S_data.Common.Name}}</td>
+                                            <td>{{S_data.Compensation}}</td>
+                                            <td>{{S_data.Common.DateOfBirth}}</td>
+                                            <td>{{S_data.Common.DateOfJoining}}</td>
+                                            <td>{{S_data.Common.Address}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
-                        <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Club</h6>
-                                    <h3>0</h3>
-                                </div>
-                                <div class="db-icon">
-                                    <img src="{% static 'assets/img/icons/dash-icon-03.svg' %}" alt="Dashboard Icon">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
-                        <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Books</h6>
-                                    <h3>200</h3>
-                                </div>
-                                <div class="db-icon">
-                                    <img src="{% static 'assets/img/icons/dash-icon-04.svg' %}" alt="Dashboard Icon">
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card flex-fill fb sm-box">
-                        <div class="social-likes">
-                            <p>Like us on facebook</p>
-                            <h6>50,095</h6>
-                        </div>
-                        <div class="social-boxs">
-                            <img src="{% static 'assets/img/icons/social-icon-01.svg' %}" alt="Social Icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card flex-fill twitter sm-box">
-                        <div class="social-likes">
-                            <p>Follow us on twitter</p>
-                            <h6>48,596</h6>
-                        </div>
-                        <div class="social-boxs">
-                            <img src="{% static 'assets/img/icons/social-icon-02.svg' %}" alt="Social Icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card flex-fill insta sm-box">
-                        <div class="social-likes">
-                            <p>Follow us on instagram</p>
-                            <h6>52,085</h6>
-                        </div>
-                        <div class="social-boxs">
-                            <img src="{% static 'assets/img/icons/social-icon-03.svg' %}" alt="Social Icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card flex-fill linkedin sm-box">
-                        <div class="social-likes">
-                            <p> Follow us on linkedin </p>
-                            <h6>69,050</h6>
-                        </div>
-                        <div class="social-boxs">
-                            <img src="{% static 'assets/img/icons/social-icon-04.svg' %}" alt="Social Icon">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+
+        <footer>
+            <p>Copyright © 2022 Dreamguys.</p>
+        </footer>
+
     </div>
+
 </div>
+
+
 {% endblock %}
